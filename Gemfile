@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.6.0'
+ruby '2.6.5'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.3'
@@ -62,6 +62,6 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # required gems for xero-ruby-oauth2 demo app
-# gem 'omniauth-xero-oauth2', :path => '../omniauth-xero-oauth2' # as a local gem
+# gem 'omniauth-xero-oauth2', :path => '../omniauth-xero-oauth2-strategy' # as a local gem
 gem 'omniauth-xero-oauth2'
 gem 'faraday' #for making http calls
