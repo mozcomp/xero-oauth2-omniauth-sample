@@ -1,4 +1,12 @@
 class SessionsController < ApplicationController
+  def setup
+    logger.debug "omniauth setup"
+    request.env['omniauth.strategy'].options[:client_id] = '40E96E2E803340FB8D05EC6510D65F2C'
+    request.env['omniauth.strategy'].options[:client_secret] = 'RGaJW6qdsLwbng3rJjyIFwpI8LV0VITXj7BQ6Nu3-ry7V4bi'
+    logger.debug "setup - request.env: #{request.env['omniauth.strategy']}"
+    render :plain => "Omniauth setup phase.", :status => 404
+end
+
   def create
     auth_hash = request.env['omniauth.auth']
     logger.debug "omniauth.auth: #{auth_hash}"
