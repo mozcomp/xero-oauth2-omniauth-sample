@@ -1,2 +1,14 @@
 <h4>Xero Ruby Oauth2 Demo App</h4>
-<p><%= button_to  "Connect to Xero", "/auth/xero_oauth2" %></p>
+<%= form_with(url: "/sessions/connect", method: 'post') do %>
+  <p>
+    <%= label_tag(:client_id, 'Xero API Client Id') %>
+    <%= text_field_tag(:client_id, '40E96E2E803340FB8D05EC6510D65F2C') %>
+  </p>
+  <p>
+    <%= label_tag(:client_secret, 'Xero API Client Secret') %>
+    <%= text_field_tag(:client_secret, 'RGaJW6qdsLwbng3rJjyIFwpI8LV0VITXj7BQ6Nu3-ry7V4bi') %>
+  </p>
+  <p>
+    <%= submit_tag  "Connect to Xero" %>
+  </p>
+<% end %>

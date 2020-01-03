@@ -1,8 +1,15 @@
 class SessionsController < ApplicationController
+  def connect
+    logger.debug "params: #{params}"
+    session[:xero_api_client_id] = params[:client_id]
+    session[:xero_api_client_secret] = params[:client_secret]
+    redirect_to '/auth/xero_oauth2'
+  end
+
   def setup
     logger.debug "omniauth setup"
-    request.env['omniauth.strategy'].options[:client_id] = '40E96E2E803340FB8D05EC6510D65F2C'
-    request.env['omniauth.strategy'].options[:client_secret] = 'RGaJW6qdsLwbng3rJjyIFwpI8LV0VITXj7BQ6Nu3-ry7V4bi'
+    request.env['omniauth.strategy'].options[:client_id] = session[:xero_api_client_id]
+    request.env['omniauth.strategy'].options[:client_secret] = session[:xero_api_client_secret]
     logger.debug "setup - request.env: #{request.env['omniauth.strategy']}"
     render :plain => "Omniauth setup phase.", :status => 404
 end
